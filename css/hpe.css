@@ -1,0 +1,19 @@
+#hpe{
+    height: 20%;
+    width: 40%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}
+
+p{
+    text-align: left;
+}
+
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
