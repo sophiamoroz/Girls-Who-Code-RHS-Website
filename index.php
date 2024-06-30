@@ -6,6 +6,7 @@ Put your name and year of graduation here!
 *Emily Broad, Class of 2022
 *Sierra Janson, Class of 2023: 5/29/2022 fixed typo, gave fixed text spacing (more centered), added styling to header
 *2023-08-30, McAdams: modified home page with notice about meeting times, also changed home page image, and max width style so it isn't huge on desktops. Also changed attribute/documentation comments like these to PHP comments, so people viewing source won't see them (no need to show the internet your business😎)
+*Simran Saluja, Class of 2025: modified styling and home page image, added sign up and login forms at the bottom of the page. working on a member system.
 */
 /* The provided code snippet is an HTML document that serves as the homepage for the Rocklin High
 School's Girls Who Code club website. It includes the necessary structure for an HTML page, such as
@@ -22,8 +23,74 @@ includes for the header and footer of the page. */
 		<!-- This page isn't connecting to the default css page !!!!!!!!!!!-->
 	<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="css/default.css" type="text/css" />  
-    </head>
+    <style>
+		.alert{
+			padding: 20px;
+			background-color: #f44336;
+			color: white;
+			margin-bottom: 15px;
+		}
+		.alert.success{background-color: #4CAF50;}
+		.alert.info{background-color: #2196F3;}
+		.alert.warning{background-color:#ff9800;}
+		.closebtn{
+			margin-left: 15px;
+			color: white;
+			font-weight: bold;
+			float: right;
+			font-size:22px;
+			line-height:20px;
+			cursor:pointer;
+			transition:0.3s;
+		}
+		.closebtn:hover{
+			color:black;
+		}
+		</style>
+		<script>
+			function closeAlert(){
+				var alert = document.getElementById('alert');
+				alert.style.display = 'none';
+			}
+		</script>
+	</head>
 	<body>
+			<?php if (isset($_GET['error'])): ?>
+				<?php
+				$error = $_GET['error'];
+				$message = '';
+				$alertType = 'alert';
+
+				switch ($error){
+					case 'none':
+						$message = 'Account created successfully!';
+						$alertType = 'alert success';
+						break;
+						case 'emptyinput':
+							$message = 'Please fill in all fields.';
+							break;
+						case 'username':
+							$message = 'Invalid username.';
+							break;
+						case 'email':
+							$message = 'Invalid email.';
+							break;
+						case 'passwordmatch':
+							$message = 'Passwords do not match.';
+							break;
+						case 'useroremailtaken':
+							$message = 'Username or email already taken.';
+							break;
+						default:
+							$message = 'An unknown error occurred.';
+							break;
+					}
+					?>
+					<div id="alert" class="<?= $alertType ?>">
+            <span class="closebtn" onclick="closeAlert();">&times;</span> 
+            <?= $message ?>
+        </div>
+    <?php endif; ?>
     <section class = "index-intro">
         <!-- The line below brings in the header from another file, using PHP. -->
         <?php include "common/header.php" ?>

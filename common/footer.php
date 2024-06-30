@@ -4,5 +4,5 @@
 */
 ?>
 <div class="footerStyling">
-<p>Made by the Rocklin High School chapter of Girls Who Code, 2023</p>
+<p>Made by the Rocklin High School chapter of Girls Who Code, 2024</p>
 </div>
