@@ -3,8 +3,8 @@ Building off of the base website that my predecessors built - I have been updati
 
 ## Current updates include:
 - [Styling](#styling)
-- [Signup and Login System](#signuplogin)
-- [Member Profiles](#members)
+- [Signup and Login System](#signupandloginsystem)
+- [Member Profiles](#memberprofiles)
 
 ## Styling
 I used HTML to re-style the member profiles page and the home page. I added a new home page picture, created a matching format for all of the member profiles page, and connected each member profiles page to the general website header and footer for a smooth transition between pages/consistent look. I also re-formatted the home page to make our club information center-aligned and flow nicely. 
