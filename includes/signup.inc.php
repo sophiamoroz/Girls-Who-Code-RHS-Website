@@ -27,7 +27,7 @@ if(strlen($_POST["uid"]) && strlen($_POST["pwd"]) && strlen($_POST["email"]))
 }
 
 else{
-    header("Location: ../index.php?error=emptyinput");
+    header("Location: ../login_page.php?error=emptyinput");
 }
 
 class Signup {
@@ -46,37 +46,38 @@ class Signup {
     public function signupUser() {
         if ($this->emptyInput() == false) {
             //echo "<script>console.log('condition 1 ran')</script>";
-            header("Location: ../index.php?error=emptyinput");
+            header("Location: ../login_page.php?error=emptyinput");
             exit();
         }
         if ($this->invalidUid() == false) {
             //echo "<script>console.log('condition 2 ran')</script>";
-            header("Location: ../index.php?error=username");
+            header("Location: ../login_page.php?error=username");
             exit();
         }
         if ($this->invalidEmail() == false) {
             //echo "<script>console.log('condition 3 ran')</script>";
-            header("Location: ../index.php?error=email");
+            header("Location: ../login_page.php?error=email");
             exit();
         }
         if ($this->pwdMatch() == false) {
             //echo "<script>console.log('condition 4 ran')</script>";
-            header("Location: ../index.php?error=passwordmatch");
+            header("Location: ../login_page.php?error=passwordmatch");
             exit();
         }
         if ($this->uidTakenCheck() == false) {
             //echo "<script>console.log('condition 5 ran')</script>";
-            header("Location: ../index.php?error=useroremailtaken");
+            header("Location: ../login_page.php?error=useroremailtaken");
             exit();
         }
+
         //change setuser to return a success flag, then return to the error=none page linked below
         //check for the return value from set user, if true set = none otherwise we assume it failed and tell the user that.
         $this->setUser($this->uid, $this->pwd, $this->email);
         //going to back to front page
-        header("location: ../index.php?error=none");
+        header("Location: ../login_page.php?error=none");
     }
 
-    private function emptyInput() {
+    private function emptyInput(){
         if (empty($this->uid) || empty($this->pwd) || empty($this->pwdRepeat) || empty($this->email)) {
             return false;
         } else {
@@ -84,7 +85,7 @@ class Signup {
         }
     }
 
-    private function invalidUid() {
+    private function invalidUid(){
         if (!preg_match("/^[a-zA-Z0-9]*$/", $this->uid)) {
             return false;
         } else {
@@ -92,7 +93,7 @@ class Signup {
         }
     }
 
-    private function invalidEmail() {
+    private function invalidEmail(){
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             return false;
         } else {
@@ -100,12 +101,20 @@ class Signup {
         }
     }
 
-    private function pwdMatch() {
+    private function pwdMatch(){
         if ($this->pwd !== $this->pwdRepeat) {
             return false;
         } else {
             return true;
         }
+    }
+
+    private function noError(){
+        
+    }
+
+    private function infoNotSent(){
+
     }
 
     private function uidTakenCheck() {
@@ -139,7 +148,6 @@ class Signup {
             $stmt->execute();
             //create an error code for this - this needs to be a check, if its less than one, then they need to try again in 5 minutes (or some amount of time) otherwise it redirects right back to homepage & tells them it was created
             //if number of rows < 1, then tell them whats in comment above this
-            echo "<script>console.log($sqlCmd->affected_rows)</script>";
 
             $stmt->close();
         }

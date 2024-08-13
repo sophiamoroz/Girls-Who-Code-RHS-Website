@@ -16,18 +16,8 @@
     <a class="nav-link" href="/activities.php">Activities</a>
     <a class="nav-link" href="/resources.php">Resources</a>
     <a class="nav-link" href="/contactus.php">Contact Us</a>
+    <a class="nav-link" href="/login_page.php">Log In</a>
     <?php
-    if(isset($_COOKIE['rhsgwc_security']))
-        {
-            echo('<a class="nav-link" href="/login-system/logout.php">Log Out</a>');
-            echo('<a class="nav-link" href="/login-system/createuser.php">Create User</a>');
-            echo('<a class="nav-link" href="/login-system/changepassword.php">Change Password</a>');
-            echo('<a class="nav-link" href="/login-system/deleteuser.php">Delete User</a>');
-        }
-    else
-    {
-        echo('<a class="nav-link" href="/login-system/login.php">Log In</a>');
-    }
     ?>
 	<script src="/js/javascript.js"></script>
 </nav>

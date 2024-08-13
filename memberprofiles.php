@@ -6,6 +6,25 @@
 
 <!-- my intial goal is to format it with a grid of photos linked to pages for each member, both current and former -->
 <!-- for now, the pages are just linked together with some normal links -->
+<?php
+$dbschema = "rhsgwc5_sandbox";
+$dbhost = "rhsgwc.com:3306";
+$dbuser = "rhsgwc5_dev";
+$dbpass = "ZSlV,jGOjN[)8[P&]r8ZOVS#zpXf#O7TM[";
+
+$connection = new mysqli($dbhost, $dbuser, $dbpass);
+if ($connection->connect_error) {
+    die("Connection to database failed: " . $connection->connect_error);
+}
+
+$result = $connection->query("SELECT id, first_name, last_name FROM profiles");
+
+while ($profile = $result->fetch_assoc()) {
+    echo '<a href="profile_view.php?id=' . $profile['id'] . '">' . $profile['first_name'] . ' ' . $profile['last_name'] . '</a><br>';
+}
+
+$connection->close();
+?>
 
 <!DOCTYPE html>
 <html>
