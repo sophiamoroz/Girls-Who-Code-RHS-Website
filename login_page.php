@@ -1,6 +1,6 @@
 <?php 
 //Simran Saluja, Class of 2025: creating login and sign up page
-
+//making a comment
 ?>
 <!DOCTYPE html>
 <html>
