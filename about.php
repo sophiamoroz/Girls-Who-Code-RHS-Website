@@ -1,6 +1,7 @@
 <!-- Amesha Banjara: Class of 2023!: wrote text content for page!! -->
 <!-- Sunny Liu: Class of 2023! -->
 <!-- Sierra Janson: Class of 2023! -->
+ <!-- Sierra Janson: Class of 2023! -->
 
 <!DOCTYPE html>
 <html>
